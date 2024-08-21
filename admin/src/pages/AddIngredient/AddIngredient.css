@@ -1,0 +1,55 @@
+.add {
+    width: 70%;
+    margin-left: max(5vw, 25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+.add form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-ingredient-name,
+.add-ingredient-amount-unitOfMeasurement,
+.add-ingredient-pricePerUnit,
+.add-ingredient-expirationDate,
+.add-ingredient-status {
+    width: max(40%, 280px);
+}
+
+.add-ingredient-name input,
+.add-ingredient-amount-unitOfMeasurement input,
+.add-ingredient-pricePerUnit input,
+.add-ingredient-expirationDate input,
+.add-ingredient-status select {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-ingredient-amount-unitOfMeasurement {
+    display: flex;
+    gap: 30px;
+}
+
+.add-ingredient-amount input,
+.add-ingredient-unitOfMeasurement input {
+    max-width: 120px;
+}
+
+.add-ingredient-status select {
+    max-width: 120px;
+}
+
+.add-btn {
+    max-width: 130px;
+    border: none;
+    padding: 10px;
+    background-color: #6a4b31;
+    color: white;
+    cursor: pointer;
+    align-self: flex-start;
+}
