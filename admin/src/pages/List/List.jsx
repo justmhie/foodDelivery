@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios'
 import {toast} from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 const List = ({url}) => {
 
   const [list,setList] = useState([]);
+  const navigate = useNavigate();
 
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
@@ -15,6 +17,7 @@ const List = ({url}) => {
       toast.error("Error")
     }
   }
+
   const removeFood = async(foodId) => {
     const response = await axios.post(`${url}/api/food/remove`,{id:foodId})
     await fetchList();
@@ -24,6 +27,11 @@ const List = ({url}) => {
       toast.error("Error");
     }
   }
+
+  const updateFood = (foodId) => {
+    navigate(`/update/${foodId}`);
+  };
+
   useEffect(()=>{
     fetchList();
   },[])
@@ -46,7 +54,10 @@ const List = ({url}) => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>₱{item.price}</p>
-              <p onClick={()=>removeFood(item._id)} className='cursor'>X</p>
+              <div className="action-container">
+                <p onClick={() => updateFood(item._id)} className='cursor'>✎</p>
+                <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
+            </div>
             </div>
           )
         })}
