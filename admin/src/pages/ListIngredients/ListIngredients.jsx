@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './ListIngredients.css'
 import axios from 'axios';
 import {toast} from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 const ListIngredients = ({url}) => {
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
   const [list,setList] = useState([]);
+  const navigate = useNavigate();
 
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/ingredients/listIngredients`)
@@ -27,6 +29,10 @@ const ListIngredients = ({url}) => {
       toast.error("Error");
     }
   }
+  
+  const updateIngredient = (ingredientId) => {
+    navigate(`/updateIngredient/${ingredientId}`);
+  };
 
   useEffect(()=>{
     fetchList();
@@ -54,7 +60,10 @@ const ListIngredients = ({url}) => {
               <p>₱{item.pricePerUnit}</p>
               <p>{item.expirationDate}</p>
               <p>{item.status}</p>
-              <p onClick={()=>removeIngredient(item._id)} className='cursor'>X</p>
+              <div className="action-container">
+                <p onClick={()=>updateIngredient(item._id)} className='cursor'>✎</p>
+                <p onClick={()=>removeIngredient(item._id)} className='cursor'>X</p>
+              </div>
             </div>
           )
         })}

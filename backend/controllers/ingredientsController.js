@@ -43,4 +43,26 @@ const removeIngredient = async (req,res) => {
     }
 }
 
-export {addIngredient,listIngredients,removeIngredient}
+// update ingredient item
+const updateIngredient = async (req,res) => {
+    try {
+        const ingredient = await ingredientsModel.findById(req.body.id);
+        if (!ingredient) {
+            return res.json({sucess: false, message: "Ingredient not found"});
+        }
+        ingredient.ingredient = req.body.ingredient || ingredient.ingredient;
+        ingredient.amount = req.body.amount || ingredient.amount;
+        ingredient.unitOfMeasurement = req.body.unitOfMeasurement || ingredient.unitOfMeasurement;
+        ingredient.pricePerUnit = req.body.pricePerUnit || ingredient.pricePerUnit;
+        ingredient.expirationDate = req.body.expirationDate || ingredient.expirationDate;
+        ingredient.status = req.body.status || ingredient.status;
+
+        await ingredient.save();
+        res.json({success: true, message: "Ingredient Updated", data: ingredient});
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: "Error updating ingredient"})
+    }
+}
+
+export {addIngredient,listIngredients,removeIngredient,updateIngredient}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './AddIngredient.css'
+import './AddIngredient.css';
 import axios from "axios"
 import { toast } from 'react-toastify'
 
@@ -25,13 +25,6 @@ const AddIngredient = ({url}) => {
     // },[data])
     const onSubmitHandler = async (event) => {
       event.preventDefault();
-      // const formData = new FormData();
-      // formData.append("ingredient",data.ingredient)
-      // formData.append("amount",Number(data.amount))
-      // formData.append("unitOfMeasurement",data.unitOfMeasurement)
-      // formData.append("pricePerUnit",Number(data.pricePerUnit))
-      // formData.append("expirationDate",data.expirationDate)
-      // formData.append("status",data.status)
       const response = await axios.post(`${url}/api/ingredients/addIngredient`,data);
       if (response.data.success) {
         setData({
