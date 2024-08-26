@@ -48,6 +48,16 @@ const Sidebar = () => {
             <img src={assets.order_icon} alt="" />
             <p>List Employee</p>
         </NavLink>
+
+        <NavLink to='/addDelivery' className="sidebar-option">
+            <img src={assets.add_icon} alt="" />
+            <p>Add Delivery Address</p>
+        </NavLink>
+
+        <NavLink to='/listDelivery' className="sidebar-option">
+            <img src={assets.order_icon} alt="" />
+            <p>List Delivery Address</p>
+        </NavLink>
       </div>
     </div>
   )

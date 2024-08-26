@@ -18,6 +18,9 @@ import AddEmployee from './pages/EmployeeCRUD/AddEmployee'
 import ListEmployee from './pages/EmployeeCRUD/ListEmployee'
 import UpdateEmployee from './pages/EmployeeCRUD/UpdateEmployee'
 
+import AddDelivery from './pages/DeliveryAddressCRUD/AddDelivery'
+import ListDelivery from './pages/DeliveryAddressCRUD/ListDelivery'
+import UpdateDelivery from './pages/DeliveryAddressCRUD/UpdateDelivery'
 
 
 const App = () => {
@@ -47,6 +50,11 @@ const App = () => {
           <Route path='/addEmployee' element={<AddEmployee url={url}/>}/>
           <Route path='/listEmployee' element={<ListEmployee url={url}/>}/>
           <Route path='/updateEmployee/:id' element={<UpdateEmployee url={url}/>}/>
+
+          <Route path='/addDelivery' element={<AddDelivery url={url}/>}/>
+          <Route path='/listDelivery' element={<ListDelivery url={url}/>}/>
+          <Route path='/updateDelivery/:id' element={<UpdateDelivery url={url}/>}/>
+
 
         </Routes>
       </div>
