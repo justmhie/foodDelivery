@@ -38,6 +38,16 @@ const Sidebar = () => {
             <img src={assets.order_icon} alt="" />
             <p>List Customers</p>
         </NavLink>
+
+        <NavLink to='/addEmployee' className="sidebar-option">
+            <img src={assets.add_icon} alt="" />
+            <p>Add Employee</p>
+        </NavLink>
+
+        <NavLink to='/listEmployee' className="sidebar-option">
+            <img src={assets.order_icon} alt="" />
+            <p>List Employee</p>
+        </NavLink>
       </div>
     </div>
   )

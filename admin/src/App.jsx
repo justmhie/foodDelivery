@@ -14,6 +14,10 @@ import UpdateIngredient from './pages/UpdateIngredient/UpdateIngredient'
 import AddCustomer from './pages/CustomerCRUD/AddCustomer'
 import ListCustomer from './pages/CustomerCRUD/ListCustomer'
 import UpdateCustomer from './pages/CustomerCRUD/UpdateCustomer'
+import AddEmployee from './pages/EmployeeCRUD/AddEmployee'
+import ListEmployee from './pages/EmployeeCRUD/ListEmployee'
+import UpdateEmployee from './pages/EmployeeCRUD/UpdateEmployee'
+
 
 
 const App = () => {
@@ -39,6 +43,10 @@ const App = () => {
           <Route path='/addCustomer' element={<AddCustomer url={url}/>}/>
           <Route path='/listCustomer' element={<ListCustomer url={url}/>}/>
           <Route path='/updateCustomer/:id' element={<UpdateCustomer url={url}/>}/>
+
+          <Route path='/addEmployee' element={<AddEmployee url={url}/>}/>
+          <Route path='/listEmployee' element={<ListEmployee url={url}/>}/>
+          <Route path='/updateEmployee/:id' element={<UpdateEmployee url={url}/>}/>
 
         </Routes>
       </div>
