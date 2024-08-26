@@ -2,8 +2,8 @@ import customerModel from "../models/customerModel.js";
 
 // add ingredient
 const addCustomer = async (req,res) => {
-    const customers = new customerModel({
-        customers:req.body.customers,
+    const customer = new customerModel({
+        customer:req.body.customer,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         email:req.body.email,
@@ -33,7 +33,7 @@ const listCustomer = async (req,res) => {
 // remove ingredient item
 const removeCustomer = async (req,res) => {
     try {
-        const customers = await customerModel.findById(req.body.id);
+        const customer = await customerModel.findById(req.body.id);
 
         await customerModel.findByIdAndDelete(req.body.id);
         res.json({success:true,message:"Customer Removed"})
@@ -46,17 +46,17 @@ const removeCustomer = async (req,res) => {
 // update ingredient item
 const uopdateCustomer = async (req,res) => {
     try {
-        const customers = await customerModel.findById(req.body.id);
-        if (!customers) {
+        const customer = await customerModel.findById(req.body.id);
+        if (!customer) {
             return res.json({sucess: false, message: "Customer not found"});
         }
-        customers.customers = req.body.customers || customers.customers;
-        customers.firstName = req.body.firstName || customers.firstName;        
-        customers.lastName = req.body.lastName || customers.lastName;
-        customers.username = req.body.username || customers.username;  
-        customers.password = req.body.password || customers.password;
-        await customers.save();
-        res.json({success: true, message: "Customer Updated", data: customers});
+        customer.customer = req.body.customer || customer.customer;
+        customer.firstName = req.body.firstName || customer.firstName;        
+        customer.lastName = req.body.lastName || customer.lastName;
+        customer.username = req.body.username || customer.username;  
+        customer.password = req.body.password || customer.password;
+        await customer.save();
+        res.json({success: true, message: "Customer Updated", data: customer});
     } catch (error) {
         console.log(error);
         res.json({success: false, message: "Error updating customer"})

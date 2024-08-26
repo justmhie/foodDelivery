@@ -9,6 +9,6 @@ const ingredientsSchema = new mongoose.Schema({
     password: {type: String, required: true},
 });
 
-const customerModel = mongoose.models.customer || mongoose.model("customer",customerSchema);
+const customerModel = mongoose.models.customer || mongoose.model("customer",customerchema);
 
 export default customerModel;

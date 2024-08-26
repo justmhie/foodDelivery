@@ -30,7 +30,7 @@ const Sidebar = () => {
         </NavLink>
         
         <NavLink to='/addCustomer' className="sidebar-option">
-            <img src={assets.order_icon} alt="" />
+            <img src={assets.add_icon} alt="" />
             <p>Add Customer</p>
         </NavLink>
 
