@@ -43,23 +43,23 @@ const AddCustomer = ({url}) => {
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="add-customer-firstname flex-col">
             <p>First Name</p>
-            <input onChange={onChangeHandler} value={data.customer} type="text" name='customer' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.firstName} type="text" name='firstName' placeholder='Type here' />
         </div>
         <div className="add-customer-lastname flex-col">
             <p>Last Name</p>
-            <input onChange={onChangeHandler} value={data.customer} type="text" name='customer' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.lastName} type="text" name='lastName' placeholder='Type here' />
         </div>
         <div className="add-customer-email flex-col">
             <p>Email</p>
-            <input onChange={onChangeHandler} value={data.customer} type="text" name='customer' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.email} type="text" name='email' placeholder='Type here' />
         </div>
         <div className="add-customer-username flex-col">
             <p>Username</p>
-            <input onChange={onChangeHandler} value={data.customer} type="text" name='customer' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.username} type="text" name='username' placeholder='Type here' />
         </div>
         <div className="add-customer-password flex-col">
             <p>Password</p>
-            <input onChange={onChangeHandler} value={data.customer} type="text" name='customer' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.password} type="text" name='password' placeholder='Type here' />
         </div>
         <button type='submit' className='add-btn'>ADD CUSTOMER INFORMATION</button>
       </form>
