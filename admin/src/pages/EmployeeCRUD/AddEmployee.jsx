@@ -43,27 +43,27 @@ const AddEmployee = ({url}) => {
       <form className='flex-col' onSubmit={onSubmitHandler}>
         <div className="add-employee-firstname flex-col">
             <p>Employee First Name</p>
-            <input onChange={onChangeHandler} value={data.employee} type="text" name='employee' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.employeeFirstName} type="text" name='employeeFirstName' placeholder='Type here' />
         </div>
 
         <div className="add-employee-lastname flex-col">
             <p>Employee Last Name</p>
-            <input onChange={onChangeHandler} value={data.employee} type="text" name='employee' placeholder='Type here' />
+            <input onChange={onChangeHandler} value={data.employeeLastName} type="text" name='employeeLastName' placeholder='Type here' />
         </div>
 
         <div className="add-employee-email flex-col">
-            <p>Employee First Name</p>
-            <input onChange={onChangeHandler} value={data.employee} type="text" name='employee' placeholder='Type here' />
+            <p>Email</p>
+            <input onChange={onChangeHandler} value={data.employeeEmail} type="text" name='employeeEmail' placeholder='Type here' />
         </div>
 
         <div className="add-employee-username flex-col">
-            <p>Employee First Name</p>
-            <input onChange={onChangeHandler} value={data.employee} type="text" name='employee' placeholder='Type here' />
+            <p>Username</p>
+            <input onChange={onChangeHandler} value={data.employeeUsername} type="text" name='employeeUsername' placeholder='Type here' />
         </div>
 
         <div className="add-employee-password flex-col">
-            <p>Employee First Name</p>
-            <input onChange={onChangeHandler} value={data.employee} type="text" name='employee' placeholder='Type here' />
+            <p>Password</p>
+            <input onChange={onChangeHandler} value={data.employeePassword} type="text" name='employeePassword' placeholder='Type here' />
         </div>
 
         <button type='submit' className='add-btn'>ADD EMPLOYEE</button>
