@@ -10,7 +10,7 @@ const ListCustomer = ({url}) => {
   const navigate = useNavigate();
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/customer/listCustomer`)
+    const response = await axios.get(`${url}/api/customers/listCustomer`)
     console.log(response.data);
     if (response.data.success) {
       setList(response.data.data);
@@ -21,7 +21,7 @@ const ListCustomer = ({url}) => {
 
   const removeCustomer = async(customerId) => {
     // console.log(ingredientId);
-    const response = await axios.post(`${url}/api/customer/removeCustomer`,{id:customerId});
+    const response = await axios.post(`${url}/api/customers/removeCustomer`,{id:customerId});
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);

@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 
-const ingredientsSchema = new mongoose.Schema({
-    customer: {type: String, required: false},
-    firstName: {type: String, required: true},
+const customerSchema = new mongoose.Schema({
+    firstName: {type: String, required: false},
     lastName: {type: String, required: true},
     email: {type: String, required: true},
     username: {type: String, required: true},
     password: {type: String, required: true},
 });
 
-const customerModel = mongoose.models.customer || mongoose.model("customer",customerchema);
+const customerModel = mongoose.models.customers || mongoose.model("customers",customerSchema);
 
 export default customerModel;

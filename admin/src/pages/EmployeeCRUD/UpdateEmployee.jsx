@@ -17,7 +17,7 @@ const UpdateEmployee = ({ url }) => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const response = await axios.get(`${url}/api/employees/listEmployees`);
+        const response = await axios.get(`${url}/api/employees/listEmployee`);
         const employee = response.data.data.find(item => item._id === employeeId);
         if (employee) {
           setData({

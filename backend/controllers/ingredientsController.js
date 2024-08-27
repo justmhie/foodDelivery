@@ -4,11 +4,11 @@ import ingredientsModel from "../models/ingredientsModel.js";
 const addIngredient = async (req,res) => {
     const ingredient = new ingredientsModel({
         ingredient:req.body.ingredient,
-        amount:req.body.amount,
+        // amount:req.body.amount,
         unitOfMeasurement:req.body.unitOfMeasurement,
         pricePerUnit:req.body.pricePerUnit,
-        expirationDate:req.body.expirationDate,
-        status:req.body.status
+        // expirationDate:req.body.expirationDate,
+        // status:req.body.status
     })
     try {
         await ingredient.save();
@@ -51,11 +51,11 @@ const updateIngredient = async (req,res) => {
             return res.json({sucess: false, message: "Ingredient not found"});
         }
         ingredient.ingredient = req.body.ingredient || ingredient.ingredient;
-        ingredient.amount = req.body.amount || ingredient.amount;
+        // ingredient.amount = req.body.amount || ingredient.amount;
         ingredient.unitOfMeasurement = req.body.unitOfMeasurement || ingredient.unitOfMeasurement;
         ingredient.pricePerUnit = req.body.pricePerUnit || ingredient.pricePerUnit;
-        ingredient.expirationDate = req.body.expirationDate || ingredient.expirationDate;
-        ingredient.status = req.body.status || ingredient.status;
+        // ingredient.expirationDate = req.body.expirationDate || ingredient.expirationDate;
+        // ingredient.status = req.body.status || ingredient.status;
 
         await ingredient.save();
         res.json({success: true, message: "Ingredient Updated", data: ingredient});

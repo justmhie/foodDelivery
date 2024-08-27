@@ -24,7 +24,7 @@ const AddCustomer = ({url}) => {
     // },[data])
     const onSubmitHandler = async (event) => {
       event.preventDefault();
-      const response = await axios.post(`${url}/api/customer/addCustomer`,data);
+      const response = await axios.post(`${url}/api/customers/addCustomer`,data);
       if (response.data.success) {
         setData({
             firstName: "",

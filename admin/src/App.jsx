@@ -22,6 +22,11 @@ import AddDelivery from './pages/DeliveryAddressCRUD/AddDelivery'
 import ListDelivery from './pages/DeliveryAddressCRUD/ListDelivery'
 import UpdateDelivery from './pages/DeliveryAddressCRUD/UpdateDelivery'
 
+// import AddSale from './pages/SalesCRUD/AddSale'
+// import ListSale from './pages/SalesCRUD/ListSale'
+// import UpdateSale from './pages/SalesCRUD/UpdateSale'
+
+
 
 const App = () => {
   const url = "http://localhost:4000"
@@ -54,6 +59,10 @@ const App = () => {
           <Route path='/addDelivery' element={<AddDelivery url={url}/>}/>
           <Route path='/listDelivery' element={<ListDelivery url={url}/>}/>
           <Route path='/updateDelivery/:id' element={<UpdateDelivery url={url}/>}/>
+
+          {/* <Route path='/addSale' element={<AddSale url={url}/>}/> */}
+          {/* <Route path='/listSale' element={<ListSale url={url}/>}/> */}
+          {/* <Route path='/updateSale/:id' element={<UpdateSale url={url}/>}/> */}
 
 
         </Routes>

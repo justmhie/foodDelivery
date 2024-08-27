@@ -17,7 +17,7 @@ const UpdateDelivery = ({ url }) => {
   useEffect(() => {
     const fetchDelivery = async () => {
       try {
-        const response = await axios.get(`${url}/api/delivery/listDelivery`);
+        const response = await axios.get(`${url}/api/deliveries/listDelivery`);
         const delivery = response.data.data.find(item => item._id === deliveryId);
         if (delivery) {
           setData({

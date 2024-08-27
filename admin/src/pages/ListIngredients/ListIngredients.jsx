@@ -44,22 +44,22 @@ const ListIngredients = ({url}) => {
       <div className="list-ingredientTable-ingredient">
         <div className="list-ingredientTable-format title">
           <b>Ingredient</b>
-          <b>Amount</b>
+          {/* <b>Amount</b> */}
           <b>Unit of Measurement</b>
           <b>Price Per Unit</b>
-          <b>Expiration Date</b>
-          <b>Status</b>
+          {/* <b>Expiration Date</b> */}
+          {/* <b>Status</b> */}
           <b>Action</b>
         </div>
         {list.map((item,index)=>{
           return(
             <div className="list-ingredientTable-format">
               <p>{item.ingredient}</p>
-              <p>{item.amount}</p>
+              {/* <p>{item.amount}</p> */}
               <p>{item.unitOfMeasurement}</p>
               <p>₱{item.pricePerUnit}</p>
-              <p>{item.expirationDate}</p>
-              <p>{item.status}</p>
+              {/* <p>{item.expirationDate}</p> */}
+              {/* <p>{item.status}</p> */}
               <div className="action-container">
                 <p onClick={()=>updateIngredient(item._id)} className='cursor'>✎</p>
                 <p onClick={()=>removeIngredient(item._id)} className='cursor'>X</p>
