@@ -8,6 +8,7 @@ import 'dotenv/config'
 import customerRouter from "./routes/customerRoute.js"
 import employeeRouter from "./routes/employeeRoute.js";
 import deliveryRouter from "./routes/deliveryRoute.js"
+import cartRouter from "./routes/cartRoute.js"
 
 // app config
 const app = express()
@@ -28,6 +29,7 @@ app.use("/api/user",userRouter)
 app.use("/api/customers",customerRouter)
 app.use("/api/employees", employeeRouter);
 app.use("/api/deliveries", deliveryRouter);
+app.use("/api/cart",cartRouter);
 
 app.get("/",(req,res)=>{
     res.send("API Working")
