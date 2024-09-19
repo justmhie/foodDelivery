@@ -11,7 +11,7 @@ const placeOrder = async (req,res) => {
     try {
         const newOrder = new orderModel({
             userId:req.body.userId,
-            items:req.body.item,    
+            items:req.body.items,    
             amount:req.body.amount,
             address:req.body.address
         })
@@ -53,13 +53,6 @@ const placeOrder = async (req,res) => {
         res.json({success:false,message:"Error"})
     }
 }   
-    // } catch (error) {
-    //     console.error('Error while placing order:', error); // Log the error with context
-    //     res.status(500).json({
-    //         success: false,
-    //         message: error.message || "An error occurred while processing your request."
-    //     });
-    // }
 
 const verifyOrder = async (req,res) => {
     const {orderId,success} = req.body;
@@ -77,6 +70,15 @@ const verifyOrder = async (req,res) => {
     }
 }
 
+// user orders for frontend
+const userOrders = async (req,res) => {
+    try {
+        const orders = await orderModel.find({userId:req.body.userId})
+        res.json({success:true,data:orders})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
 
-
-export {placeOrder,verifyOrder}
+export {placeOrder,verifyOrder,userOrders}
