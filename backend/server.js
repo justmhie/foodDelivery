@@ -9,6 +9,7 @@ import customerRouter from "./routes/customerRoute.js"
 import employeeRouter from "./routes/employeeRoute.js";
 import deliveryRouter from "./routes/deliveryRoute.js"
 import cartRouter from "./routes/cartRoute.js"
+import orderRouter from "./routes/orderRoute.js"
 
 // app config
 const app = express()
@@ -30,6 +31,7 @@ app.use("/api/customers",customerRouter)
 app.use("/api/employees", employeeRouter);
 app.use("/api/deliveries", deliveryRouter);
 app.use("/api/cart",cartRouter);
+app.use("/api/order",orderRouter);
 
 app.get("/",(req,res)=>{
     res.send("API Working")
