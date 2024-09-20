@@ -7,7 +7,7 @@ const Footer = () => {
     <div className='footer' id='footer'>
       <div className="footer-content">
         <div className="footer-content-left">
-            <img src={assets.logo} alt="" />
+            <img className="footer-logo" src={assets.logo} alt="" />
             <p>At BeanXpress, we’re passionate about coffee. From our farm to your cup, we source only the finest beans to ensure every sip is a delightful experience. Explore our curated selection of premium coffee blends and accessories designed to enhance your coffee journey. Thank you for choosing BeanXpress—where quality meets passion.</p>
             <div className="footer-social-icons">
                 <img src={assets.facebook_icon} alt="" />
