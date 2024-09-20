@@ -3,6 +3,7 @@ import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const PlaceOrder = () => {
     const {getTotalCartAmount,token,food_list,cartItems,url} = useContext(StoreContext)
@@ -32,8 +33,10 @@ const PlaceOrder = () => {
 
     useEffect(()=>{
       if (!token) {
+        toast.info("Please log in to place an order.");
         navigate('/cart')
       } else if (getTotalCartAmount()===0) {
+        toast.info("Your cart is empty. Please add items before proceeding.");
         navigate('/cart')
       }
     },[token])
@@ -60,6 +63,7 @@ const PlaceOrder = () => {
         const {session_url} = response.data;
         window.location.replace(session_url);
       } else {
+        toast.error("Error placing the order.")
         alert("Error");
       }
     }
