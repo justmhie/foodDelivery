@@ -1,6 +1,6 @@
 .order-item{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 0.5fr 1fr;
     align-items: start;
     gap: 30px;
     border: 1px solid #1a662c;
@@ -19,12 +19,18 @@
 .order-item-address{
     margin-bottom: 10px;
 }
-.order-item select{
+.order-item-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+.order-item-buttons button{
+    bottom: none;
+    padding: 12px 0px;
+    border-radius: 4px;
     background-color: #74c08b;
-    border: 1px solid #1a662c;
-    width: max(10vw,120px);
-    padding: 10px;
-    outline: none;
+    cursor: pointer;
+    color: #454545;
 }
 @media (max-width:1000px) {
     .order-item{

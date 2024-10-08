@@ -73,7 +73,7 @@ const verifyOrder = async (req,res) => {
 // user orders for frontend
 const userOrders = async (req,res) => {
     try {
-        const orders = await orderModel.find({userId:req.body.userId})
+        const orders = await orderModel.find({ userId: req.body.userId }).sort({ date: -1 });
         res.json({success:true,data:orders})
     } catch (error) {
         console.log(error);
@@ -84,7 +84,7 @@ const userOrders = async (req,res) => {
 // listing orders for admin panel
 const listOrders = async (req,res) => {
     try {
-        const orders = await orderModel.find({});
+        const orders = await orderModel.find({}).sort({ date: -1 });
         res.json({success:true,data:orders})
     } catch (error) {
         console.log(error);
@@ -93,14 +93,43 @@ const listOrders = async (req,res) => {
 }
 
 // api for updating order status
-const updateStatus = async (req,res) => {
+const updateStatus = async (req, res) => {
+    const { orderId, status } = req.body;
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status})
-        res.json({success:true,message:"Status Updated"})
+        const order = await orderModel.findById(orderId);
+        if (order) {
+            if (status === "Out for Delivery" && order.status === "Brewing your Coffee" ||
+                status === "Delivered" && order.status === "Out for Delivery") {
+                await orderModel.findByIdAndUpdate(orderId, { status, statusTimestamp: Date.now() });
+                res.json({ success: true, message: "Status Updated" });
+            } else {
+                res.json({ success: false, message: "Invalid status transition" });
+            }
+        } else {
+            res.json({ success: false, message: "Order not found" });
+        }
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({ success: false, message: "Error" });
     }
-}
+};
 
-export {placeOrder,verifyOrder,userOrders,listOrders,updateStatus}
+// api for canceling order
+const cancelOrder = async (req, res) => {
+    const { orderId } = req.body;
+    try {
+        const order = await orderModel.findById(orderId);
+        if (order && order.status === "Brewing your Coffee") {
+            await orderModel.findByIdAndDelete(orderId);
+            res.json({ success: true, message: "Order Canceled" });
+        } else {
+            res.json({ success: false, message: "Cannot cancel at this stage" });
+        }
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+};
+
+
+export {placeOrder,verifyOrder,userOrders,listOrders,updateStatus,cancelOrder}
