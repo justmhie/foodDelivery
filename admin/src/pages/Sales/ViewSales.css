@@ -1,0 +1,55 @@
+.view-sales {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.view-sales h1 {
+    text-align: center;
+}
+
+.date-filters, .quick-filters {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.date-filters label {
+    margin-right: 10px;
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sales-table th,
+.sales-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.sales-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.view-sales .date-filters button,
+.view-sales .quick-filters button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for better appearance */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Align buttons inline */
+    font-size: 16px; /* Increase font size */
+    margin: 5px; /* Margin between buttons */
+    cursor: pointer; /* Change cursor to pointer */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.view-sales .date-filters button:hover,
+.view-sales .quick-filters button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

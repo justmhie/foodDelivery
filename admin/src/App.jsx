@@ -21,11 +21,7 @@ import UpdateEmployee from './pages/EmployeeCRUD/UpdateEmployee'
 import AddDelivery from './pages/DeliveryAddressCRUD/AddDelivery'
 import ListDelivery from './pages/DeliveryAddressCRUD/ListDelivery'
 import UpdateDelivery from './pages/DeliveryAddressCRUD/UpdateDelivery'
-
-// import AddSale from './pages/SalesCRUD/AddSale'
-// import ListSale from './pages/SalesCRUD/ListSale'
-// import UpdateSale from './pages/SalesCRUD/UpdateSale'
-
+import ViewSales from './pages/Sales/ViewSales';
 
 
 const App = () => {
@@ -63,6 +59,7 @@ const App = () => {
           {/* <Route path='/addSale' element={<AddSale url={url}/>}/> */}
           {/* <Route path='/listSale' element={<ListSale url={url}/>}/> */}
           {/* <Route path='/updateSale/:id' element={<UpdateSale url={url}/>}/> */}
+          <Route path='/viewSales' element={<ViewSales url={url} />} />
 
 
         </Routes>

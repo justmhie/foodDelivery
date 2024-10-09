@@ -59,15 +59,11 @@ const Sidebar = () => {
             <p>List Delivery Address</p>
         </NavLink>
 
-        {/* <NavLink to='/addSale' className="sidebar-option">
-            <img src={assets.add_icon} alt="" />
-            <p>Add Sales Report</p>
+        <NavLink to='/viewSales' className="sidebar-option">
+            <img src={assets.order_icon} alt="" />
+            <p>View Sales Report</p>
         </NavLink>
 
-        <NavLink to='/listSale' className="sidebar-option">
-            <img src={assets.order_icon} alt="" />
-            <p>List Sales Report</p>
-        </NavLink> */}
       </div>
     </div>
   )

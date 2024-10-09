@@ -1,6 +1,7 @@
 import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
 import Stripe from "stripe"
+import salesModel from "../models/salesModel.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -54,21 +55,31 @@ const placeOrder = async (req,res) => {
     }
 }   
 
-const verifyOrder = async (req,res) => {
-    const {orderId,success} = req.body;
+const verifyOrder = async (req, res) => {
+    const { orderId, success } = req.body;
     try {
-        if (success ==="true") {
-            await orderModel.findByIdAndUpdate(orderId,{payment:true});
-            res.json({success:true, message:"Paid"})
+        if (success === "true") {
+            const order = await orderModel.findById(orderId);
+            await orderModel.findByIdAndUpdate(orderId, { payment: true });
+
+            // Create a sales entry
+            const newSale = new salesModel({
+                orderId: order._id,
+                amount: order.amount,
+                items: order.items,
+            });
+            await newSale.save();
+
+            res.json({ success: true, message: "Paid and Sale Recorded" });
         } else {
             await orderModel.findByIdAndDelete(orderId);
-            res.json({success:false,message:"Not Paid"})
+            res.json({ success: false, message: "Not Paid" });
         }
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})        
+        res.json({ success: false, message: "Error" });
     }
-}
+};
 
 // user orders for frontend
 const userOrders = async (req,res) => {
