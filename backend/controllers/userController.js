@@ -70,4 +70,32 @@ const registerUser = async (req,res) => {
     }
 }
 
-export {loginUser, registerUser}
+// Fetch all users (Admin only)
+const getAllUsers = async (req, res) => {
+    try {
+        // Fetch users without including the password field
+        const users = await userModel.find({}, 'username email'); // Removed password
+        res.json({ success: true, data: users });
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: "Failed to fetch users." });
+    }
+};
+
+// Update password
+const updatePassword = async (req, res) => {
+    const { userId } = req.body;
+    const { newPassword } = req.body;
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        await userModel.findByIdAndUpdate(userId, { password: hashedPassword });
+        res.json({ success: true, message: "Password updated successfully." });
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: "Error updating password." });
+    }
+};
+
+export { loginUser, registerUser, getAllUsers, updatePassword };

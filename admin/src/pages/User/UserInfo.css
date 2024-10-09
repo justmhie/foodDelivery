@@ -1,0 +1,49 @@
+.user-info-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-info-table th,
+.user-info-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-info-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.user-info-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 600px) {
+    .user-info-table th,
+    .user-info-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .user-info-table tr {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}
