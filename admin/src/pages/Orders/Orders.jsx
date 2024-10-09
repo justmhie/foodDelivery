@@ -16,20 +16,31 @@ import {assets} from '../../assets/assets'
         }
       }
     
-    const statusHandler = async (event,orderId) => {
-      // console.log(event,orderId);
-      const response = await axios.post(url+"/api/order/status",{
-        orderId,
-        status:event.target.value
-      })
-      if (response.data.success) {
-        await fetchAllOrders();
-      }
-    }
-
+      const statusHandler = async (event, orderId) => {
+        try {
+            const response = await axios.post(url + "/api/order/status", {
+                orderId,
+                status: event.target.value // 
+            });
+            if (response.data.success) {
+                await fetchAllOrders();
+            } else {
+                toast.error("Error updating order status");
+            }
+        } catch (error) {
+            console.error("Error updating order status:", error);
+            toast.error("An error occurred. Please try again.");
+        }
+    };
+    
     useEffect(()=> {
       fetchAllOrders();
     },[])
+
+    const formatDate = (dateString) => {
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    }
 
   return (
     <div className='order add'>
@@ -55,13 +66,22 @@ import {assets} from '../../assets/assets'
               </div>
               <p className="order-item-phone">{order.address.phone}</p>
             </div>
-            <p>Items: {order.items.length}</p>
+            <p>Items: {order.items.length}<br/>Date: {formatDate(order.date)}</p>
             <p>₱{order.amount}</p>
-            <select onChange={(event)=>statusHandler(event,order._id)} value={order.status}>
-              <option value="Brewing your Coffee">Brewing your Coffee</option>
-              <option value="Out for Delivery">Out for Delivery</option>
-              <option value="Delivered">Delivered</option>
-            </select>
+            {order.status !== "Delivered" && (
+              <div className="order-item-buttons">
+                  {order.status === "Brewing your Coffee" && (
+                      <button onClick={(event) => statusHandler(event, order._id)} value="Out for Delivery">
+                          Out for Delivery
+                      </button>
+                  )}
+                  {order.status === "Out for Delivery" && (
+                      <button onClick={(event) => statusHandler(event, order._id)} value="Delivered">
+                          Delivered
+                      </button>
+                  )}
+              </div>
+            )}
           </div>
         ))}
       </div>

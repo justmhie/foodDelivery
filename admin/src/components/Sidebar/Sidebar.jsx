@@ -20,6 +20,11 @@ const Sidebar = () => {
             <p>Orders</p>
         </NavLink>
 
+        <NavLink to='/userInfo' className="sidebar-option">
+            <img src={assets.order_icon} alt="" />
+            <p>View Users</p>
+        </NavLink>
+
         <NavLink to='/addIngredient' className="sidebar-option">
             <img src={assets.add_icon} alt="" />
             <p>Add Ingredient</p>
@@ -27,16 +32,6 @@ const Sidebar = () => {
         <NavLink to='/listIngredients' className="sidebar-option">
             <img src={assets.order_icon} alt="" />
             <p>List Ingredients</p>
-        </NavLink>
-        
-        <NavLink to='/addCustomer' className="sidebar-option">
-            <img src={assets.add_icon} alt="" />
-            <p>Add Customer</p>
-        </NavLink>
-
-        <NavLink to='/listCustomer' className="sidebar-option">
-            <img src={assets.order_icon} alt="" />
-            <p>List Customers</p>
         </NavLink>
 
         <NavLink to='/addEmployee' className="sidebar-option">
@@ -47,16 +42,6 @@ const Sidebar = () => {
         <NavLink to='/listEmployee' className="sidebar-option">
             <img src={assets.order_icon} alt="" />
             <p>List Employee</p>
-        </NavLink>
-
-        <NavLink to='/addDelivery' className="sidebar-option">
-            <img src={assets.add_icon} alt="" />
-            <p>Add Deflivery Address</p>
-        </NavLink>
-
-        <NavLink to='/listDelivery' className="sidebar-option">
-            <img src={assets.order_icon} alt="" />
-            <p>List Delivery Address</p>
         </NavLink>
 
         <NavLink to='/viewSales' className="sidebar-option">
