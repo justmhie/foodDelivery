@@ -84,18 +84,30 @@ const getAllUsers = async (req, res) => {
 
 // Update password
 const updatePassword = async (req, res) => {
-    const { userId } = req.body;
-    const { newPassword } = req.body;
+    const { email, newPassword } = req.body;
+    
     try {
+        // Check if the user with the given email exists
+        const user = await userModel.findOne({ email });
+        
+        if (!user) {
+            return res.json({ success: false, message: "User with this email does not exist." });
+        }
+        
+        // Hash the new password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);
+        
+        // Update the password
+        user.password = hashedPassword;
+        await user.save();
 
-        await userModel.findByIdAndUpdate(userId, { password: hashedPassword });
         res.json({ success: true, message: "Password updated successfully." });
     } catch (error) {
         console.error(error);
         res.json({ success: false, message: "Error updating password." });
     }
 };
+
 
 export { loginUser, registerUser, getAllUsers, updatePassword };

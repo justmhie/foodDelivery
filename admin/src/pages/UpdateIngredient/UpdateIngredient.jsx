@@ -9,11 +9,11 @@ const UpdateIngredient = ({ url }) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     ingredient: "",
-    // amount: "",
+    amount: "",
     unitOfMeasurement: "",
     pricePerUnit: "",
-    // expirationDate: "",
-    // status: "In Stock"
+    expirationDate: "",
+    status: "In Stock"
   });
 
   useEffect(() => {
@@ -24,11 +24,11 @@ const UpdateIngredient = ({ url }) => {
         if (ingredient) {
           setData({
             ingredient: ingredient.ingredient,
-            // amount: ingredient.amount,
+            amount: ingredient.amount,
             unitOfMeasurement: ingredient.unitOfMeasurement,
             pricePerUnit: ingredient.pricePerUnit,
-            // expirationDate: ingredient.expirationDate.split('T')[0],
-            // status: ingredient.status,
+            expirationDate: ingredient.expirationDate.split('T')[0],
+            status: ingredient.status,
           });
         } else {
           toast.error("Ingredient not found");
@@ -72,10 +72,10 @@ const UpdateIngredient = ({ url }) => {
           <input onChange={onChangeHandler} value={data.ingredient} type="text" name='ingredient' placeholder='Type here' />
         </div>
         <div className="add-ingredient-amount-unitOfMeasurement">
-          {/* <div className="add-ingredient-amount flex-col">
+          <div className="add-ingredient-amount flex-col">
             <p>Amount</p>
             <input onChange={onChangeHandler} value={data.amount} type="Number" name='amount' placeholder='1.5' />
-          </div> */}
+          </div>
           <div className="add-ingredient-unitOfMeasurement flex-col">
             <p>Unit of Measurement</p>
             <input onChange={onChangeHandler} value={data.unitOfMeasurement} type="text" name='unitOfMeasurement' placeholder='kg' />
@@ -85,18 +85,18 @@ const UpdateIngredient = ({ url }) => {
           <p>Price Per Unit</p>
           <input onChange={onChangeHandler} value={data.pricePerUnit} type="Number" name='pricePerUnit' placeholder='100' />
         </div>
-        {/* <div className="add-ingredient-expirationDate flex-col">
+        <div className="add-ingredient-expirationDate flex-col">
           <p>Expiration Date</p>
           <input onChange={onChangeHandler} value={data.expirationDate} type="date" name='expirationDate' />
-        </div> */}
-        {/* <div className="add-ingredient-status flex-col">
+        </div>
+        <div className="add-ingredient-status flex-col">
           <p>Status</p>
           <select onChange={onChangeHandler} name="status" value={data.status}>
             <option value="In Stock">In Stock</option>
             <option value="Out of Stock">Out of Stock</option>
             <option value="Expired">Expired</option>
           </select>
-        </div> */}
+        </div>
         <button type='submit' className='add-btn'>UPDATE INGREDIENT</button>
       </form>
     </div>
