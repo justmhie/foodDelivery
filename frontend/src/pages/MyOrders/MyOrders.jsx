@@ -27,14 +27,14 @@ const MyOrders = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    const cancelOrder = async (orderId) => {
+    const cancelOrder = async (orderId, amount) => {
         try {
             const response = await axios.delete(url + "/api/order/cancel", {
                 headers: { token },
-                data: { orderId } // Send orderId in the request body
+                data: { orderId } 
             });
             if (response.data.success) {
-                toast.success("Order cancelled successfully!");
+                toast.success(`Order cancelled successfully! Your refund will be processed shortly.`);
                 fetchOrders();
             } else {
                 toast.error("Error cancelling the order.");
@@ -51,6 +51,7 @@ const MyOrders = () => {
             <h2>My Orders</h2>
             <div className="container">
                 {data.map((order, index) => {
+                    console.log(order); 
                     return (
                         <div className="my-orders-order" key={index}>
                             <img src={assets.parcel_icon} alt="" />

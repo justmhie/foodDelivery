@@ -16,22 +16,30 @@ const ViewSales = ({ url }) => {
     useEffect(() => {
         const fetchSalesData = async () => {
             try {
-                const response = await axios.get(`${url}/api/order/list`); // Adjust the endpoint as needed
+                const response = await axios.get(`${url}/api/order/list`);
+                console.log(response.data); // Log the entire response
+    
                 if (response.data.success) {
                     const orders = response.data.data;
-                    // Extract sales data from orders
-                    const sales = orders.map(order => ({
-                        id: order._id,
-                        items: order.items,
-                        amount: order.amount,
-                        status: order.status,
-                        date: new Date(order.date).toLocaleDateString(), // Format date if needed
-                        originalDate: new Date(order.date) // Keep the original date for filtering
-                    }));
+                    console.log(orders); // Log orders to check their content
+                    console.log(orders.map(order => order.status)); // Log statuses
+    
+                    const sales = orders
+                        .filter(order => order.status && order.status.toLowerCase() === 'delivered') // Check for null/undefined and case
+                        .map(order => ({
+                            id: order._id,
+                            items: order.items,
+                            amount: order.amount,
+                            status: order.status,
+                            date: new Date(order.date).toLocaleDateString(),
+                            originalDate: new Date(order.date)
+                        }));
+    
+                    console.log(sales); // Log the filtered sales to see the result
+    
                     setSalesData(sales);
                     setFilteredSales(sales);
-
-                    // Calculate total sales amount
+    
                     const total = sales.reduce((sum, sale) => sum + sale.amount, 0);
                     setTotalSales(total);
                 } else {
@@ -42,12 +50,16 @@ const ViewSales = ({ url }) => {
                 toast.error("Error fetching sales data");
             }
         };
-
+    
         fetchSalesData();
     }, [url]);
+    
+    
 
     const handleFilter = () => {
+        
         let filtered = [...salesData];
+
 
         // Input Validation Testing for custom date range
         if (filterOption === 'custom') {
